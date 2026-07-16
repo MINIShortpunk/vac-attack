@@ -1,7 +1,7 @@
-/* ==========================================
+/* ===========================================
    VacAttack
-   styles.css
-========================================== */
+   Premium Theme
+=========================================== */
 
 *{
     margin:0;
@@ -9,35 +9,49 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
 
     font-family:'Inter',sans-serif;
-    background:#f5f6fc;
-    color:#222;
+
+    background:#F7F8FC;
+
+    color:#1F2937;
 
 }
 
+/* ---------- Header ---------- */
+
 header{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:28px 7%;
-
-    background:white;
 
     position:sticky;
     top:0;
 
-    box-shadow:0 6px 20px rgba(0,0,0,.05);
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px 7%;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+    z-index:1000;
 
 }
 
 .logo h1{
 
     color:#5B2EFF;
-    font-size:3rem;
+
+    font-size:2.3rem;
+
     font-weight:800;
 
 }
@@ -45,71 +59,200 @@ header{
 nav{
 
     display:flex;
-    gap:40px;
+
+    gap:35px;
 
 }
 
 nav a{
 
-    color:#444;
     text-decoration:none;
+
+    color:#444;
+
     font-weight:600;
 
+    transition:.25s;
+
 }
+
+nav a:hover{
+
+    color:#5B2EFF;
+
+}
+
+/* ---------- Hero ---------- */
 
 .hero{
 
     text-align:center;
 
-    padding:100px 20px;
-
-    background:#eef0f8;
+    padding:70px 20px 45px;
 
 }
 
 .tag{
 
-    color:#666;
-    font-weight:600;
+    color:#5B2EFF;
 
-    margin-bottom:20px;
+    font-weight:700;
+
+    margin-bottom:18px;
 
 }
 
 .hero h2{
 
-    font-size:4.5rem;
+    font-size:3.2rem;
+
     font-weight:800;
 
     max-width:900px;
 
     margin:auto;
 
+    line-height:1.15;
+
 }
 
-.hero p:last-child{
+.hero-text{
 
-    margin-top:30px;
+    margin:25px auto;
+
+    max-width:700px;
 
     color:#666;
 
-    font-size:1.25rem;
+    font-size:1.15rem;
+
+    line-height:1.7;
 
 }
 
-section{
+.hero-button{
 
-    padding:70px 7%;
+    display:inline-block;
+
+    margin-top:10px;
+
+    background:#5B2EFF;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 32px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+    transition:.25s;
 
 }
 
-section h2{
+.hero-button:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ---------- Stats ---------- */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    width:min(1100px,90%);
+
+    margin:20px auto 50px;
+
+}
+
+.stat{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
 
     text-align:center;
 
-    font-size:3rem;
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
 
-    margin-bottom:40px;
+}
+
+.stat h3{
+
+    color:#5B2EFF;
+
+    font-size:2rem;
+
+}
+
+.stat p{
+
+    margin-top:8px;
+
+    color:#666;
+
+}
+
+/* ---------- Law Firms ---------- */
+
+#firms-section{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+    gap:20px;
+
+}
+
+.section-header h2{
+
+    font-size:2rem;
+
+}
+
+#searchInput{
+
+    width:320px;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    border:1px solid #ddd;
+
+    font-size:1rem;
+
+}
+
+#searchInput:focus{
+
+    outline:none;
+
+    border-color:#5B2EFF;
 
 }
 
@@ -118,21 +261,23 @@ section h2{
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(340px,1fr));
+    repeat(auto-fit,minmax(320px,1fr));
 
-    gap:30px;
+    gap:25px;
 
 }
+
+/* ---------- Firm Card ---------- */
 
 .firm-card{
 
     background:white;
 
-    border-radius:24px;
+    border-radius:22px;
 
-    padding:30px;
+    padding:28px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.06);
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
 
     transition:.25s;
 
@@ -140,15 +285,15 @@ section h2{
 
 .firm-card:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-5px);
 
 }
 
 .firm-top{
 
     display:flex;
+
     justify-content:space-between;
-    align-items:flex-start;
 
 }
 
@@ -156,37 +301,35 @@ section h2{
 
     color:#5B2EFF;
 
-    font-size:1.5rem;
+    font-size:1.4rem;
 
 }
 
 .rank{
 
-    display:block;
-
-    margin-top:6px;
-
     color:#888;
 
-    font-size:.9rem;
+    display:block;
+
+    margin-top:5px;
 
 }
 
 .star{
 
-    border:none;
-
     background:none;
 
-    font-size:2rem;
+    border:none;
 
     cursor:pointer;
+
+    font-size:1.8rem;
 
 }
 
 .firm-type{
 
-    margin-top:25px;
+    margin-top:22px;
 
     font-weight:700;
 
@@ -194,7 +337,7 @@ section h2{
 
 .firm-location{
 
-    margin-top:10px;
+    margin-top:8px;
 
     color:#666;
 
@@ -202,26 +345,27 @@ section h2{
 
 .firm-footer{
 
-    margin-top:35px;
-
     display:flex;
 
     justify-content:space-between;
+
     align-items:center;
+
+    margin-top:30px;
 
 }
 
 .status{
 
-    background:#ece8ff;
+    background:#ECE8FF;
 
     color:#5B2EFF;
 
-    padding:8px 16px;
+    padding:8px 15px;
 
     border-radius:999px;
 
-    font-size:.9rem;
+    font-size:.85rem;
 
     font-weight:700;
 
@@ -229,21 +373,95 @@ section h2{
 
 .view-button{
 
+    border:none;
+
     background:#5B2EFF;
 
     color:white;
 
-    border:none;
+    padding:12px 20px;
 
-    padding:12px 22px;
-
-    border-radius:12px;
+    border-radius:10px;
 
     cursor:pointer;
 
-    font-weight:600;
+    font-weight:700;
 
 }
+
+/* ---------- Coffee ---------- */
+
+.coffee{
+
+    width:min(900px,90%);
+
+    margin:90px auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    padding:50px;
+
+    text-align:center;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.06);
+
+}
+
+.coffee h2{
+
+    margin-bottom:20px;
+
+}
+
+.coffee p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+.coffee-button{
+
+    display:inline-block;
+
+    margin-top:28px;
+
+    background:#5B2EFF;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px 32px;
+
+    border-radius:14px;
+
+    font-weight:700;
+
+}
+
+/* ---------- Footer ---------- */
+
+footer{
+
+    padding:45px;
+
+    text-align:center;
+
+    color:#777;
+
+}
+
+footer p:first-child{
+
+    margin-bottom:10px;
+
+}
+
+/* ---------- Mobile ---------- */
 
 @media(max-width:900px){
 
@@ -265,7 +483,27 @@ nav{
 
 .hero h2{
 
-    font-size:2.8rem;
+    font-size:2.3rem;
+
+}
+
+.stats{
+
+    grid-template-columns:1fr;
+
+}
+
+.section-header{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+}
+
+#searchInput{
+
+    width:100%;
 
 }
 
