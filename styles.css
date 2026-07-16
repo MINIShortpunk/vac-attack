@@ -1,6 +1,5 @@
 /* ===========================================
-   VacAttack
-   Premium Theme
+   VacAttack v0.2
 =========================================== */
 
 *{
@@ -16,14 +15,12 @@ html{
 body{
 
     font-family:'Inter',sans-serif;
-
-    background:#F7F8FC;
-
+    background:#F5F7FC;
     color:#1F2937;
 
 }
 
-/* ---------- Header ---------- */
+/* ================= HEADER ================= */
 
 header{
 
@@ -33,14 +30,12 @@ header{
     background:white;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
     padding:22px 7%;
 
-    box-shadow:0 5px 18px rgba(0,0,0,.05);
+    box-shadow:0 6px 18px rgba(0,0,0,.05);
 
     z-index:1000;
 
@@ -49,9 +44,7 @@ header{
 .logo h1{
 
     color:#5B2EFF;
-
-    font-size:2.3rem;
-
+    font-size:2.4rem;
     font-weight:800;
 
 }
@@ -59,7 +52,6 @@ header{
 nav{
 
     display:flex;
-
     gap:35px;
 
 }
@@ -67,12 +59,9 @@ nav{
 nav a{
 
     text-decoration:none;
-
     color:#444;
-
     font-weight:600;
-
-    transition:.25s;
+    transition:.2s;
 
 }
 
@@ -82,51 +71,48 @@ nav a:hover{
 
 }
 
-/* ---------- Hero ---------- */
+/* ================= HERO ================= */
 
 .hero{
 
+    padding:70px 20px 40px;
+
     text-align:center;
 
-    padding:70px 20px 45px;
+}
+
+.hero-content{
+
+    max-width:850px;
+    margin:auto;
 
 }
 
 .tag{
 
     color:#5B2EFF;
-
     font-weight:700;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
 .hero h2{
 
-    font-size:3.2rem;
-
-    font-weight:800;
-
-    max-width:900px;
-
-    margin:auto;
-
+    font-size:3.5rem;
     line-height:1.15;
+    margin-bottom:25px;
 
 }
 
 .hero-text{
 
-    margin:25px auto;
+    color:#666;
+    font-size:1.15rem;
+    line-height:1.8;
 
     max-width:700px;
-
-    color:#666;
-
-    font-size:1.15rem;
-
-    line-height:1.7;
+    margin:auto;
 
 }
 
@@ -134,17 +120,16 @@ nav a:hover{
 
     display:inline-block;
 
-    margin-top:10px;
+    margin-top:35px;
 
     background:#5B2EFF;
-
     color:white;
 
-    text-decoration:none;
-
-    padding:16px 32px;
+    padding:16px 34px;
 
     border-radius:14px;
+
+    text-decoration:none;
 
     font-weight:700;
 
@@ -158,9 +143,12 @@ nav a:hover{
 
 }
 
-/* ---------- Stats ---------- */
+/* ================= STATS ================= */
 
 .stats{
+
+    width:min(1200px,92%);
+    margin:10px auto 60px;
 
     display:grid;
 
@@ -168,23 +156,19 @@ nav a:hover{
 
     gap:25px;
 
-    width:min(1100px,90%);
-
-    margin:20px auto 50px;
-
 }
 
 .stat{
 
     background:white;
 
-    border-radius:20px;
-
-    padding:30px;
+    padding:28px;
 
     text-align:center;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.05);
+    border-radius:22px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.05);
 
 }
 
@@ -199,50 +183,54 @@ nav a:hover{
 .stat p{
 
     margin-top:8px;
-
     color:#666;
 
 }
 
-/* ---------- Law Firms ---------- */
+/* ================= LAW FIRMS ================= */
 
-#firms-section{
+.firms-section{
 
-    width:min(1200px,92%);
-
+    width:min(1300px,94%);
     margin:auto;
 
 }
 
-.section-header{
+.firms-header{
 
     display:flex;
-
     justify-content:space-between;
-
-    align-items:center;
+    align-items:end;
 
     margin-bottom:35px;
 
-    gap:20px;
+    gap:30px;
 
 }
 
-.section-header h2{
+.firms-header h2{
 
-    font-size:2rem;
+    font-size:2.4rem;
+
+}
+
+.firms-header p{
+
+    margin-top:8px;
+
+    color:#777;
 
 }
 
 #searchInput{
 
-    width:320px;
+    width:360px;
 
-    padding:14px 18px;
+    padding:16px 20px;
 
-    border-radius:12px;
+    border:1px solid #DDD;
 
-    border:1px solid #ddd;
+    border-radius:14px;
 
     font-size:1rem;
 
@@ -256,43 +244,44 @@ nav a:hover{
 
 }
 
+/* ================= CARDS ================= */
+
 #firms{
 
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(320px,1fr));
+    repeat(auto-fit,minmax(360px,1fr));
 
-    gap:25px;
+    gap:28px;
 
 }
-
-/* ---------- Firm Card ---------- */
 
 .firm-card{
 
     background:white;
 
-    border-radius:22px;
-
     padding:28px;
+
+    border-radius:22px;
 
     box-shadow:0 12px 30px rgba(0,0,0,.06);
 
     transition:.25s;
 
+    cursor:pointer;
+
 }
 
 .firm-card:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-6px);
 
 }
 
 .firm-top{
 
     display:flex;
-
     justify-content:space-between;
 
 }
@@ -307,23 +296,24 @@ nav a:hover{
 
 .rank{
 
-    color:#888;
-
     display:block;
 
-    margin-top:5px;
+    margin-top:6px;
+
+    color:#888;
+
+    font-size:.9rem;
 
 }
 
 .star{
 
     background:none;
-
     border:none;
 
-    cursor:pointer;
-
     font-size:1.8rem;
+
+    cursor:pointer;
 
 }
 
@@ -337,9 +327,35 @@ nav a:hover{
 
 .firm-location{
 
-    margin-top:8px;
+    margin-top:10px;
 
     color:#666;
+
+}
+
+.practice-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+    margin-top:20px;
+
+}
+
+.practice-tags span{
+
+    background:#EEF1FF;
+
+    color:#5B2EFF;
+
+    padding:8px 12px;
+
+    border-radius:999px;
+
+    font-size:.8rem;
 
 }
 
@@ -351,23 +367,23 @@ nav a:hover{
 
     align-items:center;
 
-    margin-top:30px;
+    margin-top:28px;
 
 }
 
 .status{
 
-    background:#ECE8FF;
+    background:#EAFBF0;
 
-    color:#5B2EFF;
+    color:#0F8A43;
 
     padding:8px 15px;
 
     border-radius:999px;
 
-    font-size:.85rem;
-
     font-weight:700;
+
+    font-size:.85rem;
 
 }
 
@@ -379,9 +395,9 @@ nav a:hover{
 
     color:white;
 
-    padding:12px 20px;
+    padding:12px 22px;
 
-    border-radius:10px;
+    border-radius:12px;
 
     cursor:pointer;
 
@@ -389,19 +405,19 @@ nav a:hover{
 
 }
 
-/* ---------- Coffee ---------- */
+/* ================= COFFEE ================= */
 
 .coffee{
 
-    width:min(900px,90%);
+    width:min(900px,92%);
 
     margin:90px auto;
 
     background:white;
 
-    border-radius:28px;
-
     padding:50px;
+
+    border-radius:28px;
 
     text-align:center;
 
@@ -417,9 +433,9 @@ nav a:hover{
 
 .coffee p{
 
-    color:#666;
-
     line-height:1.8;
+
+    color:#666;
 
 }
 
@@ -435,7 +451,7 @@ nav a:hover{
 
     text-decoration:none;
 
-    padding:16px 32px;
+    padding:16px 30px;
 
     border-radius:14px;
 
@@ -443,11 +459,11 @@ nav a:hover{
 
 }
 
-/* ---------- Footer ---------- */
+/* ================= FOOTER ================= */
 
 footer{
 
-    padding:45px;
+    padding:50px;
 
     text-align:center;
 
@@ -457,18 +473,17 @@ footer{
 
 footer p:first-child{
 
-    margin-bottom:10px;
+    margin-bottom:8px;
 
 }
 
-/* ---------- Mobile ---------- */
+/* ================= MOBILE ================= */
 
 @media(max-width:900px){
 
 header{
 
     flex-direction:column;
-
     gap:20px;
 
 }
@@ -476,7 +491,6 @@ header{
 nav{
 
     flex-wrap:wrap;
-
     justify-content:center;
 
 }
@@ -493,10 +507,9 @@ nav{
 
 }
 
-.section-header{
+.firms-header{
 
     flex-direction:column;
-
     align-items:stretch;
 
 }
