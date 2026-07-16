@@ -8,200 +8,356 @@
 
 <title>Vacatory</title>
 
+<meta name="description" content="Research UK law firms, organise applications, track deadlines and stay commercially aware.">
+
 <link rel="stylesheet" href="styles.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 </head>
 
 <body>
 
-<header>
+<header class="site-header">
 
-<div class="logo">
+<div class="container header-inner">
 
-<h1>Vacatory</h1>
+<a href="#" class="brand">
+
+<div class="brand-mark">
+
+<img src="logo.svg" alt="Vacatory logo">
 
 </div>
 
-<nav>
+<div class="brand-text">
 
-<a href="#">Home</a>
-<a href="#">Law Firms</a>
+<h1>Vacatory</h1>
+
+<p>
+Built by a law student.
+</p>
+
+</div>
+
+</a>
+
+<nav class="main-nav">
+
+<a href="#firms-section">Firms</a>
+
 <a href="#">Deadlines</a>
+
 <a href="#">Commercial Awareness</a>
+
+<a href="#">Favourites</a>
+
+<a href="#">Notes</a>
+
 <a href="#">Profile</a>
 
 </nav>
 
+</div>
+
 </header>
 
-
+<main>
 
 <section class="hero">
 
-<div class="hero-content">
+<div class="container hero-grid">
 
-<p class="tag">
+<div class="hero-copy">
 
-Built by a law student, for law students.
+<p class="eyebrow">
+
+Vacation Scheme Companion
 
 </p>
 
 <h2>
 
-Helping every aspiring lawyer secure a vacation scheme.
+Focus on what moves you forward.
 
 </h2>
 
-<p class="hero-text">
+<p class="hero-description">
 
-Research firms, compare opportunities, organise applications, track deadlines and stay commercially aware — all in one place.
-
-</p>
-
-<a href="#firms-section" class="hero-button">
-
-Browse Law Firms
-
-</a>
-
-</div>
-
-</section>
-
-
-
-<section class="stats">
-
-<div class="stat">
-
-<h3 id="firmCount">
-
-0
-
-</h3>
-
-<p>
-
-Law Firms
+Research the UK's leading firms, organise applications, follow deadlines, keep personal notes and stay commercially aware—all from one beautifully organised workspace.
 
 </p>
 
-</div>
-
-<div class="stat">
-
-<h3>
-
-Daily
-
-</h3>
-
-<p>
-
-Deadline Updates
-
-</p>
-
-</div>
-
-<div class="stat">
-
-<h3>
-
-Free
-
-</h3>
-
-<p>
-
-Forever
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<section
-id="firms-section"
-class="firms-section">
-
-<div class="firms-header">
-
-<div>
-
-<h2>
-
-Law Firms
-
-</h2>
-
-<p>
-
-Browse, favourite and compare firms.
-
-</p>
-
-</div>
+<div class="hero-search">
 
 <input
 id="searchInput"
-type="text"
-placeholder="🔍 Search firms...">
+type="search"
+placeholder="Search firms…"
+autocomplete="off">
+
+<button aria-label="Search">
+
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+<circle cx="11" cy="11" r="7"></circle>
+
+<path d="M20 20L16.65 16.65"></path>
+
+</svg>
+
+</button>
 
 </div>
 
+</div>
 
+<div class="hero-image">
 
-<div id="firms">
+<img
+src="images/editorial-desk.webp"
+alt="Editorial illustration of law books, fountain pen, coffee and papers">
+
+</div>
+<section class="firms-section" id="firms-section">
+
+<div class="container">
+
+<div class="section-header">
+
+<div>
+
+<p class="section-label">
+
+UK LAW FIRMS
+
+</p>
+
+<h2>
+
+Top UK Firms
+
+</h2>
+
+<p>
+
+Browse firms, compare opportunities and save your favourites.
+
+</p>
+
+</div>
+
+<div class="firm-count">
+
+<span id="firmCount">
+
+0
+
+</span>
+
+<span>
+
+firms
+
+</span>
+
+</div>
+
+</div>
+
+<div class="firms-wrapper">
+
+<div id="firms" class="firms-grid">
 
 Loading firms...
 
 </div>
 
+</div>
+
+</div>
+
 </section>
 
+<section class="editorial-panel">
 
+<div class="container editorial-grid">
 
-<section class="coffee">
+<div>
+
+<p class="section-label">
+
+COMMERCIAL AWARENESS
+
+</p>
 
 <h2>
 
-☕ Keep Vacatory Free
+Everything organised in one place.
 
 </h2>
 
 <p>
 
-Vacatory will always be free.
-
-If it helps you secure a vacation scheme or training contract and you'd like to support future development, I'd be incredibly grateful for a coffee.
-
-Every contribution helps keep Vacatory free for every law student.
+Track application deadlines, favourite firms, store personal notes and build commercial awareness without switching between multiple websites.
 
 </p>
 
-<a
-href="https://buymeacoffee.com/"
-target="_blank"
-class="coffee-button">
+</div>
 
-Buy Me A Coffee
+<div class="editorial-cards">
 
-</a>
+<article class="feature-card">
+
+<h3>
+
+Deadlines
+
+</h3>
+
+<p>
+
+Never miss another vacation scheme application.
+
+</p>
+
+</article>
+
+<article class="feature-card">
+
+<h3>
+
+Notes
+
+</h3>
+
+<p>
+
+Keep interview preparation and research beside each firm.
+
+</p>
+
+</article>
+
+<article class="feature-card">
+
+<h3>
+
+Commercial Awareness
+
+</h3>
+
+<p>
+
+Follow the stories affecting your chosen firms.
+
+</p>
+
+</article>
+
+</div>
+
+</div>
 
 </section>
 
+<section class="support-section">
 
+<div class="container support-card">
 
-<footer>
+<div>
+
+<p class="section-label">
+
+SUPPORT VACATORY
+
+</p>
+
+<h2>
+
+Always free for students.
+
+</h2>
+
+<p>
+
+If Vacatory helps you secure a vacation scheme or training contract, you can support future development with a coffee. Every contribution helps keep the platform free for everyone.
+
+</p>
+
+</div>
+
+<a
+
+href="https://buymeacoffee.com/"
+target="_blank"
+rel="noopener"
+
+class="support-button">
+
+Buy me a coffee
+
+</a>
+
+</div>
+
+</section>
+
+  <footer class="site-footer">
+
+<div class="container footer-inner">
+
+<div>
+
+<h3>
+
+Vacatory
+
+</h3>
+
+<p>
+
+Built by a law student, for law students.
+
+</p>
+
+</div>
+
+<div class="footer-links">
+
+<a href="#firms-section">
+
+Firms
+
+</a>
+
+<a href="#">
+
+Deadlines
+
+</a>
+
+<a href="#">
+
+Commercial Awareness
+
+</a>
+
+<a href="#">
+
+Notes
+
+</a>
+
+</div>
+
+<div class="footer-copy">
 
 <p>
 
@@ -211,13 +367,15 @@ Buy Me A Coffee
 
 <p>
 
-Built by a student, for students.
+Designed to help aspiring lawyers focus on what matters most.
 
 </p>
 
+</div>
+
+</div>
+
 </footer>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -225,6 +383,11 @@ Built by a student, for students.
 
 <script src="app.js"></script>
 
+</main>
+
 </body>
 
 </html>
+</div>
+
+</section>
