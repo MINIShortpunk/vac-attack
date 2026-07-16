@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<script>
+(function(){
+var saved = localStorage.getItem("vacatory-theme");
+var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+document.documentElement.dataset.theme = theme;
+})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+
+<title>Commercial Awareness — Vacatory</title>
+
+<meta name="description" content="Real news from UK law firms, refreshed weekly — the deals, hires and announcements that make up commercial awareness.">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="commercial-awareness.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+</head>
+<body>
+
+<header class="site-header">
+<div class="container header-inner">
+
+<a href="index.html" class="brand">
+<svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
+<path d="M4 4 L14 24" class="logo-stroke-left" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+<path d="M24 4 L14 24" class="logo-stroke-right" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+</svg>
+<span class="brand-word">acatory</span>
+</a>
+
+<nav class="main-nav">
+<a href="index.html#firms-section">Firms</a>
+<a href="#">Deadlines</a>
+<a href="commercial-awareness.html" class="active">Commercial Awareness</a>
+<a href="#">Favourites</a>
+<a href="#">Profile</a>
+</nav>
+
+<a href="index.html#support" class="nav-support">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M12 21s-7.5-4.6-10-9.3C.5 8.2 2 4.5 5.6 4c2-.3 3.9.7 5 2.3C11.7 4.7 13.6 3.7 15.6 4c3.6.5 5.1 4.2 3.6 7.7C16.7 16.4 12 21 12 21z"></path>
+</svg>
+Keep Vacatory Free
+</a>
+
+<button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="4"></circle>
+<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+</svg>
+<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+</svg>
+</button>
+
+</div>
+</header>
+
+<main>
+
+<section class="ca-hero">
+<div class="container">
+<span class="ca-eyebrow">Updated weekly</span>
+<h1>Commercial<br>awareness<span class="accent-dot">.</span></h1>
+<p class="ca-lede">Real deals, hires and announcements pulled straight from firms' own newsrooms — the raw material for every "have you seen…" interview question.</p>
+</div>
+</section>
+
+<section class="ca-controls">
+<div class="container ca-controls-inner">
+
+<div class="ca-search">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ca-search-icon">
+<circle cx="11" cy="11" r="7"></circle>
+<path d="M20 20L16.65 16.65"></path>
+</svg>
+<input id="newsSearch" type="search" placeholder="Search headlines…" autocomplete="off">
+</div>
+
+<select id="firmFilter">
+<option value="">All firms</option>
+</select>
+
+<select id="dateFilter">
+<option value="">Any time</option>
+<option value="7">Past week</option>
+<option value="30">Past month</option>
+<option value="90">Past 3 months</option>
+</select>
+
+</div>
+</section>
+
+<section class="ca-feed-section">
+<div class="container">
+
+<div id="newsLoading" class="ca-state">Loading the latest news…</div>
+
+<div id="newsEmpty" class="ca-state" hidden>
+<h3>Nothing here yet</h3>
+<p>The weekly scan hasn't turned up anything for this filter. Try widening the date range or clearing the search.</p>
+</div>
+
+<div id="newsFeed" class="ca-feed"></div>
+
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer" id="support">
+<div class="container footer-inner">
+<div class="footer-support">
+<h3>Keep Vacatory Free</h3>
+<p>Vacatory will always be free for law students. If you find it helpful, consider supporting the project.</p>
+</div>
+<a href="#" class="btn-support">Buy me a coffee</a>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+<script src="theme.js"></script>
+<script src="commercial-awareness.js"></script>
+
+</body>
+</html>
