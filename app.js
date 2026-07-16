@@ -24,6 +24,7 @@ async function loadFirms() {
     const { data, error } = await client
         .from("firms")
         .select("*")
+        .eq("active", true)
         .order("uk_rank", { ascending: true });
 
     if (error) {
@@ -38,9 +39,6 @@ async function loadFirms() {
     }
 
     firms = data || [];
-
-    document.getElementById("firmCount").textContent =
-        firms.length;
 
     displayFirms(firms);
 
@@ -67,73 +65,64 @@ function displayFirms(list) {
 
         card.className = "firm-card";
 
+        const logo = firm.logo_url
+            ? `<img src="${firm.logo_url}" alt="${firm.name} logo">`
+            : (firm.short_name || firm.name || "V").charAt(0);
+
         card.innerHTML = `
 
 <div class="firm-card-header">
 
     <div class="firm-logo">
-
-        ${firm.name ? firm.name.charAt(0) : "V"}
-
+        ${logo}
     </div>
 
-    <div class="firm-main">
-
-        <h3>${firm.name}</h3>
-
-        <p class="firm-city">
-
-            ${firm.head_office ?? "United Kingdom"}
-
-        </p>
-
-    </div>
-
-    <button
-        class="star"
-        aria-label="Favourite">
-
-        ☆
-
+    <button class="star" aria-label="Favourite firm">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21s-7.5-4.6-10-9.3C.5 8.2 2 4.5 5.6 4c2-.3 3.9.7 5 2.3C11.7 4.7 13.6 3.7 15.6 4c3.6.5 5.1 4.2 3.6 7.7C16.7 16.4 12 21 12 21z"></path>
+        </svg>
     </button>
 
 </div>
 
-<div class="firm-meta">
+<h3>${firm.name}</h3>
 
-    <span class="status-pill">
+<p class="firm-type">${firm.firm_type ?? "Commercial Law"}</p>
 
-        Applications Open
+<div class="firm-details">
 
-    </span>
-
-    <span class="firm-rank">
-
-        UK #${firm.uk_rank ?? "-"}
-
-    </span>
-
-</div>
-
-<div class="firm-bottom">
-
-    <span>
-
-        ${firm.firm_type ?? "Commercial Law"}
-
-    </span>
-
-    <span class="chevron">
-
-        →
-
-    </span>
+    <p class="firm-location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"></path>
+            <circle cx="12" cy="10" r="2.4"></circle>
+        </svg>
+        ${firm.head_office ?? "United Kingdom"}
+    </p>
 
 </div>
+
+<a href="#" class="firm-link">
+    View profile
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M13 6l6 6-6 6"></path>
+    </svg>
+</a>
 
 `;
 
-        card.addEventListener("click", () => {
+        card.querySelector(".star").addEventListener("click", (e) => {
+
+            e.stopPropagation();
+
+            e.currentTarget.classList.toggle("active");
+
+        });
+
+        card.addEventListener("click", (e) => {
+
+            if (e.target.closest(".star")) return;
+
+            if (e.target.closest(".firm-link")) e.preventDefault();
 
             alert("Firm profile coming next.");
 
