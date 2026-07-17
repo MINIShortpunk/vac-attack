@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadFirm();
+    setupTabs();
 
 });
 
@@ -47,6 +48,9 @@ async function loadFirm() {
     document.getElementById("firmType").textContent = firm.firm_type ?? "";
     document.getElementById("firmOverview").textContent = firm.overview ?? "";
 
+    const websiteLinkEl = document.getElementById("firmWebsiteLink");
+    websiteLinkEl.innerHTML = firm.website ? profileLink(firm.website, "Visit firm website") : "";
+
     const metaRow = document.getElementById("firmMeta");
     metaRow.innerHTML = "";
     if (firm.head_office) {
@@ -58,14 +62,26 @@ async function loadFirm() {
 
     // Overview tab
     document.getElementById("ov-size").textContent = firm.firm_size || "Not yet available";
-    document.getElementById("ov-secondments").textContent = firm.secondments || "Not yet available";
-    document.getElementById("ov-scholarships").textContent = firm.scholarships || "Not yet available";
+
+    document.getElementById("ov-secondments").innerHTML =
+        (firm.secondments || "Not yet available") +
+        (firm.careers_url ? ` ${profileLink(firm.careers_url, "More info")}` : "");
+
+    document.getElementById("ov-scholarships").innerHTML =
+        (firm.scholarships || "Not yet available") +
+        (firm.careers_url ? ` ${profileLink(firm.careers_url, "More info")}` : "");
 
     const links = document.getElementById("ov-links");
     links.innerHTML = "";
     if (firm.website) links.innerHTML += profileLink(firm.website, "Firm website");
     if (firm.careers_url) links.innerHTML += profileLink(firm.careers_url, "Careers page");
     if (firm.linkedin) links.innerHTML += profileLink(firm.linkedin, "LinkedIn");
+
+    // Firm Culture tab
+    document.getElementById("fc-awards").textContent = firm.awards || "Not yet available";
+    document.getElementById("fc-edi").textContent = firm.edi_work || "Not yet available";
+    document.getElementById("fc-probono").textContent = firm.pro_bono_work || "Not yet available";
+    document.getElementById("fc-clients").textContent = firm.key_clients || "Not yet available";
 
     // Favourite button state (localStorage placeholder until auth/user_favourites is wired up)
     const favKey = `vacatory-fav-${firmId}`;
@@ -267,5 +283,21 @@ function formatDate(d) {
 function formatMoney(n) {
     if (n === null || n === undefined) return "";
     return `£${Number(n).toLocaleString("en-GB")}`;
+}
+
+function setupTabs() {
+
+    const tabs = document.querySelectorAll(".tab-btn");
+    const panels = document.querySelectorAll(".tab-panel");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            panels.forEach(p => p.classList.remove("active"));
+            tab.classList.add("active");
+            document.getElementById(`tab-${tab.dataset.tab}`).classList.add("active");
+        });
+    });
+
 }
 
