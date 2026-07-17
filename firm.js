@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadFirm();
-    setupTabs();
-    setupNotes();
 
 });
 
@@ -88,9 +86,8 @@ async function loadFirm() {
     loadPracticeAreas();
     loadRoles();
     loadLocations();
-    loadVacationSchemes();
-    loadTrainingContracts();
-    loadNotes();
+    loadVacationSchemes(firm.careers_url);
+    loadTrainingContracts(firm.careers_url);
 
 }
 
@@ -186,7 +183,7 @@ async function loadLocations() {
 
 }
 
-async function loadVacationSchemes() {
+async function loadVacationSchemes(careersUrl) {
 
     const container = document.getElementById("vacationSchemesList");
     const { data, error } = await client
@@ -195,7 +192,9 @@ async function loadVacationSchemes() {
         .eq("firm_id", firmId);
 
     if (error || !data || !data.length) {
-        container.innerHTML = "<p class='loading'>No vacation scheme data listed yet.</p>";
+        container.innerHTML = careersUrl
+            ? `<p class='loading'>No vacation scheme data listed yet. ${profileLink(careersUrl, "Visit the firm's careers page")}</p>`
+            : "<p class='loading'>No vacation scheme data listed yet.</p>";
         return;
     }
 
@@ -211,13 +210,13 @@ async function loadVacationSchemes() {
                 ${fact("Status", vs.status)}
             </div>
             ${vs.eligibility ? `<p class="profile-eligibility"><strong>Eligibility:</strong> ${vs.eligibility}</p>` : ""}
-            ${vs.application_link ? profileLink(vs.application_link, "Apply / more info") : ""}
+            ${(vs.application_link || careersUrl) ? profileLink(vs.application_link || careersUrl, "Apply / more info") : ""}
         </div>
     `).join("");
 
 }
 
-async function loadTrainingContracts() {
+async function loadTrainingContracts(careersUrl) {
 
     const container = document.getElementById("trainingContractList");
     const { data, error } = await client
@@ -226,7 +225,9 @@ async function loadTrainingContracts() {
         .eq("firm_id", firmId);
 
     if (error || !data || !data.length) {
-        container.innerHTML = "<p class='loading'>No training contract data listed yet.</p>";
+        container.innerHTML = careersUrl
+            ? `<p class='loading'>No training contract data listed yet. ${profileLink(careersUrl, "Visit the firm's careers page")}</p>`
+            : "<p class='loading'>No training contract data listed yet.</p>";
         return;
     }
 
@@ -245,7 +246,7 @@ async function loadTrainingContracts() {
                 ${fact("Status", tc.status)}
             </div>
             ${tc.eligibility ? `<p class="profile-eligibility"><strong>Eligibility:</strong> ${tc.eligibility}</p>` : ""}
-            ${tc.application_link ? profileLink(tc.application_link, "Apply / more info") : ""}
+            ${(tc.application_link || careersUrl) ? profileLink(tc.application_link || careersUrl, "Apply / more info") : ""}
         </div>
     `).join("");
 
@@ -268,37 +269,3 @@ function formatMoney(n) {
     return `£${Number(n).toLocaleString("en-GB")}`;
 }
 
-function setupTabs() {
-
-    const tabs = document.querySelectorAll(".tab-btn");
-    const panels = document.querySelectorAll(".tab-panel");
-
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            panels.forEach(p => p.classList.remove("active"));
-            tab.classList.add("active");
-            document.getElementById(`tab-${tab.dataset.tab}`).classList.add("active");
-        });
-    });
-
-}
-
-// Notes: stored locally per-firm until user accounts / user_notes table are wired up
-function notesKey() {
-    return `vacatory-notes-${firmId}`;
-}
-
-function loadNotes() {
-    const saved = localStorage.getItem(notesKey());
-    if (saved) document.getElementById("notesInput").value = saved;
-}
-
-function setupNotes() {
-    document.getElementById("saveNotesBtn").addEventListener("click", () => {
-        localStorage.setItem(notesKey(), document.getElementById("notesInput").value);
-        const savedLabel = document.getElementById("notesSaved");
-        savedLabel.classList.remove("hidden");
-        setTimeout(() => savedLabel.classList.add("hidden"), 1500);
-    });
-}
