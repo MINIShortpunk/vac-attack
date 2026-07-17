@@ -71,6 +71,8 @@ async function loadFirm() {
         (firm.scholarships || "Not yet available") +
         (firm.careers_url ? ` ${profileLink(firm.careers_url, "More info")}` : "");
 
+    document.getElementById("ov-visa").textContent = firm.visa_sponsorship || "Not confirmed on the firm's official site — check directly.";
+
     const links = document.getElementById("ov-links");
     links.innerHTML = "";
     if (firm.website) links.innerHTML += profileLink(firm.website, "Firm website");
