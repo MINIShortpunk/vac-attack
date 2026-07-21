@@ -1045,3 +1045,9 @@ textarea,
     grid-template-columns: 1fr;
   }
 }
+/* Relax homepage hero heading spacing */
+.hero-copy h1 {
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  max-width: 720px;
+}
