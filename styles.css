@@ -992,3 +992,56 @@ textarea,
   font-weight: 800;
   letter-spacing: -0.04em;
 }
+/* Firm profile polish */
+
+.tab-heading {
+  margin-bottom: 24px;
+}
+
+.tab-heading h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
+}
+
+.roles-list {
+  display: block;
+}
+
+.simple-role-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.simple-role-list li {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+  font-weight: 700;
+}
+
+#vacationSchemesList,
+#trainingContractList {
+  grid-template-columns: 1fr;
+}
+
+.application-card {
+  max-width: 920px;
+}
+
+.application-card h3 {
+  font-size: 1.18rem;
+}
+
+@media (max-width: 720px) {
+  .simple-role-list {
+    grid-template-columns: 1fr;
+  }
+}
