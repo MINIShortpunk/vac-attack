@@ -243,9 +243,21 @@
         });
       });
 
-      allDeadlines = deadlines
-        .filter(item => firmNames.has(item.firmId))
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
+      const seenDeadlines = new Set();
+
+allDeadlines = deadlines
+  .filter(item => firmNames.has(item.firmId))
+  .filter(item => {
+    const key = `${item.firmId}|${item.type}|${item.title}|${item.date}`;
+
+    if (seenDeadlines.has(key)) {
+      return false;
+    }
+
+    seenDeadlines.add(key);
+    return true;
+  })
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
 
       displayDeadlines(allDeadlines);
     }
