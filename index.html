@@ -5,33 +5,42 @@
 
   <script>
     (function () {
-      var saved = localStorage.getItem("vacatory-theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.dataset.theme = theme;
+      var savedTheme = localStorage.getItem("vacatory-theme");
+      var preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+
+      document.documentElement.dataset.theme = savedTheme || preferredTheme;
     })();
   </script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f2eb">
 
-  <title>Vacatory</title>
-  <meta name="description" content="Vacatory helps law students research law firms, vacation schemes, training contracts and deadlines.">
-
-  <link rel="stylesheet" href="styles.css?v=12">
+  <title>Vacatory — Law careers, organised</title>
+  <meta
+    name="description"
+    content="Research law firms, compare opportunities and keep track of vacation scheme and training contract deadlines."
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
+  <link rel="stylesheet" href="styles.css?v=13">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
-
       <a href="index.html" class="brand" aria-label="Vacatory home">
         <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
           <path d="M4 4 L14 24" class="logo-stroke-left" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
@@ -47,53 +56,63 @@
         <a href="favourites.html">Favourites</a>
       </nav>
 
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-        </svg>
+      <div class="header-actions">
+        <a class="header-search-link" href="#firm-search" aria-label="Search firms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M20 20l-3.5-3.5"></path>
+          </svg>
+        </a>
 
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
-        </svg>
-      </button>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
 
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
-<div class="site-notice" role="status">
-  <div class="container">
-    <strong>Site update in progress.</strong>
-    <span>Vacatory is currently being updated, so some firm pages, deadlines and research notes may be incomplete or change while I refresh the data.</span>
+  <div class="site-notice" role="status">
+    <div class="container notice-inner">
+      <span class="notice-dot" aria-hidden="true"></span>
+      <strong>Site update in progress.</strong>
+      <span>Some information may change while the database is refreshed.</span>
+    </div>
   </div>
-</div>
 
-<main>
+  <main id="main-content">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
 
-    <section class="home-hero">
-      <div class="container home-hero-grid">
-
+      <div class="container hero-layout">
         <div class="hero-copy">
-          <p class="eyebrow">Built by a law student, for law students.</p>
+          <p class="eyebrow">Law careers, organised.</p>
 
-          <h1>
-            Find your future in <span>law.</span>
+          <h1 id="hero-title">
+            Your future<br>
+            <span>in law.</span>
           </h1>
 
-          <p class="hero-text">
-            Track vacation schemes, training contracts, firm research and application notes in one calm place.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#firms-section" class="primary-btn">
-              Browse firms
-              <span aria-hidden="true">→</span>
-            </a>
-
-            <a href="#deadlines-preview" class="secondary-btn">
-              View deadlines
-              <span aria-hidden="true">⌁</span>
-            </a>
+          <div class="hero-search" id="firm-search">
+            <label for="searchInput" class="sr-only">Search firms, locations or opportunities</label>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M20 20l-3.5-3.5"></path>
+            </svg>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search firms, locations or opportunities"
+              autocomplete="off"
+            >
+            <a href="#firms-section" class="search-submit" aria-label="View matching firms">→</a>
           </div>
         </div>
 
@@ -101,18 +120,18 @@
           <div class="deadline-card-header">
             <div>
               <p class="eyebrow">Deadlines</p>
-              <h2>Upcoming dates</h2>
+              <h2>Upcoming</h2>
             </div>
-            <a href="#" class="small-link">View all</a>
+            <a href="deadlines.html" class="small-link">View all <span aria-hidden="true">→</span></a>
           </div>
 
-          <div class="deadline-list">
+          <div class="deadline-list" id="deadlinePreviewList">
             <article class="deadline-row">
               <div>
                 <strong>A&amp;O Shearman</strong>
                 <span>Vacation scheme</span>
               </div>
-              <p>1 Aug 2026</p>
+              <time datetime="2026-08-01">1 Aug</time>
             </article>
 
             <article class="deadline-row">
@@ -120,7 +139,7 @@
                 <strong>Linklaters</strong>
                 <span>Training contract</span>
               </div>
-              <p>31 Aug 2026</p>
+              <time datetime="2026-08-31">31 Aug</time>
             </article>
 
             <article class="deadline-row">
@@ -128,7 +147,7 @@
                 <strong>Freshfields</strong>
                 <span>Vacation scheme</span>
               </div>
-              <p>15 Sep 2026</p>
+              <time datetime="2026-09-15">15 Sep</time>
             </article>
 
             <article class="deadline-row">
@@ -136,28 +155,38 @@
                 <strong>Slaughter and May</strong>
                 <span>Training contract</span>
               </div>
-              <p>1 Oct 2026</p>
+              <time datetime="2026-10-01">1 Oct</time>
             </article>
           </div>
         </aside>
-
       </div>
     </section>
 
-    <section class="search-section" aria-label="Search and filter firms">
+    <section class="quick-strip" aria-label="Vacatory features">
+      <div class="container quick-strip-grid">
+        <a href="#firms-section" class="quick-item">
+          <span class="quick-number">01</span>
+          <strong>Research firms</strong>
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <a href="deadlines.html" class="quick-item">
+          <span class="quick-number">02</span>
+          <strong>Track deadlines</strong>
+          <span aria-hidden="true">→</span>
+        </a>
+
+        <a href="commercial-awareness.html" class="quick-item">
+          <span class="quick-number">03</span>
+          <strong>Follow the market</strong>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="search-section" aria-label="Filter firms">
       <div class="container">
-
         <div class="search-panel">
-
-          <div class="search-control">
-            <label for="searchInput" class="sr-only">Search firms</label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="M20 20l-3.5-3.5"></path>
-            </svg>
-            <input id="searchInput" type="search" placeholder="Search firms, locations or ranks..." autocomplete="off">
-          </div>
-
           <div class="filter-control">
             <label for="filterPracticeArea">Practice area</label>
             <select id="filterPracticeArea">
@@ -179,59 +208,30 @@
             </select>
           </div>
 
-          <button id="filterReset" class="ghost-btn hidden" type="button">
-            Reset filters
-          </button>
-
+          <button id="filterReset" class="ghost-btn hidden" type="button">Reset</button>
         </div>
-
       </div>
     </section>
 
     <section id="firms-section" class="firms-section">
       <div class="container">
-
         <div class="section-heading-row">
           <div>
-            <p class="eyebrow">Firm research</p>
-            <h2>Featured firms</h2>
-            <p id="firmCount" class="section-subtitle">Loading firms...</p>
+            <p class="eyebrow">Firm directory</p>
+            <h2>Top UK firms</h2>
+            <p id="firmCount" class="section-subtitle">Loading firms…</p>
           </div>
 
-          <a href="#firms-section" class="small-link">
-            View all firms
-            <span aria-hidden="true">→</span>
-          </a>
+          <a href="#firms-section" class="small-link">View all <span aria-hidden="true">→</span></a>
         </div>
 
         <div id="firms" class="firms-grid" aria-live="polite"></div>
-
       </div>
     </section>
-
-    <section class="guide-strip">
-      <div class="container">
-        <div class="guide-card">
-          <div class="guide-icon" aria-hidden="true">⌂</div>
-
-          <div>
-            <h2>New to vacation schemes?</h2>
-            <p>Use each firm profile to compare schemes, training contracts, practice areas, locations and useful application notes.</p>
-          </div>
-
-          <a href="#firms-section" class="secondary-btn">
-            Start researching
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-
       <a href="index.html" class="brand small" aria-label="Vacatory home">
         <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
           <path d="M4 4 L14 24" class="logo-stroke-left" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
@@ -247,14 +247,12 @@
         <a href="#">Contact</a>
         <a href="#">Privacy</a>
       </div>
-
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase.js"></script>
-  <script src="app.js"></script>
-  <script src="theme.js"></script>
-
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="supabase.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="theme.js"></script>
 </body>
 </html>
