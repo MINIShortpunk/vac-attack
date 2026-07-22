@@ -249,60 +249,45 @@
 
       displayDeadlines(allDeadlines);
     }
+function displayDeadlines(deadlines) {
+  const list = document.getElementById("deadlinesList");
+  const count = document.getElementById("deadlineCount");
 
-    function displayDeadlines(deadlines) {
-      const list = document.getElementById("deadlinesList");
-      const count = document.getElementById("deadlineCount");
+  const sortedDeadlines = [...deadlines].sort((a, b) => {
+    return new Date(a.date) - new Date(b.date);
+  });
 
-      count.textContent = deadlines.length === 1
-        ? "Showing 1 deadline"
-        : `Showing ${deadlines.length} deadlines`;
+  count.textContent = sortedDeadlines.length === 1
+    ? "Showing 1 deadline"
+    : `Showing ${sortedDeadlines.length} deadlines`;
 
-      if (!deadlines.length) {
-        list.innerHTML = "<p class='loading'>No deadlines found.</p>";
-        return;
-      }
+  if (!sortedDeadlines.length) {
+    list.innerHTML = "<p class='loading'>No deadlines found.</p>";
+    return;
+  }
 
-      list.innerHTML = deadlines.map(item => `
-        <article class="profile-card application-card">
-          <p class="firm-type">${escapeHtml(item.type)}</p>
-          <h3>${escapeHtml(item.firmName)}</h3>
-          <p>${escapeHtml(item.title)}</p>
+  list.innerHTML = `
+    <div class="deadline-table" role="table" aria-label="Application deadlines">
+      <div class="deadline-table-head" role="row">
+        <span>Deadline</span>
+        <span>Firm</span>
+        <span>Type</span>
+        <span></span>
+      </div>
 
-          <div class="profile-fact-grid">
-            ${fact("Opens", formatDate(item.opens))}
-            ${fact("Deadline", formatDate(item.date))}
-            ${fact("Location", item.location)}
-            ${fact("Status", item.status)}
-            ${fact("Salary", item.salary)}
-          </div>
-
-          ${item.eligibility ? `
-            <p class="profile-eligibility">
-              <strong>Eligibility:</strong> ${escapeHtml(item.eligibility)}
-            </p>
-          ` : ""}
-
-          <div class="profile-links">
-            <a href="firm.html?id=${encodeURIComponent(item.firmId)}" class="firm-link profile-external-link">
-              View firm
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6"></path>
-              </svg>
-            </a>
-
-            ${item.link ? `
-              <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener" class="firm-link profile-external-link">
-                Apply / more info
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="M7 17L17 7M7 7h10v10"></path>
-                </svg>
-              </a>
-            ` : ""}
-          </div>
+      ${sortedDeadlines.map(item => `
+        <article class="deadline-table-row" role="row">
+          <span class="deadline-date">${formatDate(item.date)}</span>
+          <span class="deadline-firm">${escapeHtml(item.firmName)}</span>
+          <span>${escapeHtml(item.type)}</span>
+          <a href="firm.html?id=${encodeURIComponent(item.firmId)}" class="small-link">
+            View firm →
+          </a>
         </article>
-      `).join("");
-    }
+      `).join("")}
+    </div>
+  `;
+}
 
     function applyDeadlineFilters() {
       const search = document.getElementById("deadlineSearch").value.trim().toLowerCase();
