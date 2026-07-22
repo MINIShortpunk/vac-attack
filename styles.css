@@ -1165,3 +1165,77 @@ textarea,
     gap: 6px;
   }
 }
+/* Clean chronological deadlines table - forced desktop layout */
+
+#deadlinesList {
+  display: block !important;
+  width: 100%;
+}
+
+.deadline-table {
+  width: 100%;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.deadline-table-head,
+.deadline-table-row {
+  display: grid !important;
+  grid-template-columns: 150px 1.6fr 1fr 120px;
+  gap: 20px;
+  align-items: center;
+  padding: 16px 22px;
+}
+
+.deadline-table-head {
+  background: var(--card-soft);
+  color: var(--faint);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+}
+
+.deadline-table-row {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+
+.deadline-table-row:last-child {
+  border-bottom: 0;
+}
+
+.deadline-date {
+  color: var(--purple);
+  font-weight: 850;
+}
+
+.deadline-firm {
+  color: var(--text);
+  font-weight: 750;
+}
+
+.deadline-table-row .small-link {
+  justify-self: end;
+  font-weight: 800;
+}
+
+@media (max-width: 720px) {
+  .deadline-table-head {
+    display: none !important;
+  }
+
+  .deadline-table-row {
+    grid-template-columns: 1fr !important;
+    gap: 6px;
+  }
+
+  .deadline-table-row .small-link {
+    justify-self: start;
+  }
+}
