@@ -30,11 +30,13 @@
   >
 
   <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="chamber-profile.css?v=2">
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 
-<body>
+<body class="chamber-profile-page">
   <a class="skip-link" href="#main-content">
     Skip to content
   </a>
@@ -297,17 +299,17 @@
           <button
             class="tab-btn"
             type="button"
-            data-tab="pupillage"
+            data-tab="locations"
           >
-            Pupillage
+            Locations
           </button>
 
           <button
             class="tab-btn"
             type="button"
-            data-tab="mini-pupillage"
+            data-tab="opportunities"
           >
-            Mini-pupillage
+            Opportunities
           </button>
 
           <button
@@ -316,14 +318,6 @@
             data-tab="funding"
           >
             Funding
-          </button>
-
-          <button
-            class="tab-btn"
-            type="button"
-            data-tab="locations"
-          >
-            Locations
           </button>
 
           <button
@@ -410,51 +404,82 @@
 
         <section
           class="tab-panel"
-          id="tab-pupillage"
+          id="tab-locations"
         >
           <div class="tab-heading">
             <p class="eyebrow">
-              Bar training
+              Chambers and circuits
             </p>
 
             <h2>
-              Pupillage
+              Locations
             </h2>
 
             <p class="tab-intro">
-              Pupillage places, application dates, eligibility,
-              selection stages, structure and tenancy information.
+              Principal chambers, regional locations, circuits and
+              accessibility information where published.
             </p>
           </div>
 
           <div
-            id="pupillageList"
+            id="locationsList"
             class="profile-list"
           ></div>
         </section>
 
         <section
           class="tab-panel"
-          id="tab-mini-pupillage"
+          id="tab-opportunities"
         >
-          <div class="tab-heading">
-            <p class="eyebrow">
-              Work experience
-            </p>
+          <div class="opportunities-heading-row">
 
-            <h2>
-              Mini-pupillage
-            </h2>
+            <div class="opportunities-heading-main">
+              <p class="eyebrow">
+                Applications
+              </p>
 
-            <p class="tab-intro">
-              Assessed and unassessed mini-pupillage opportunities,
-              eligibility, dates and application information.
-            </p>
+              <h2>
+                Opportunities
+              </h2>
+
+              <p class="tab-intro">
+                Pupillage and mini-pupillage opportunities ordered by
+                application closing date, nearest first.
+              </p>
+            </div>
+
+            <aside
+              class="opportunities-source-note"
+              aria-label="Research information"
+            >
+              <strong>Official-source research</strong>
+
+              <span>
+                Dates and details are shown only where confirmed.
+              </span>
+            </aside>
+
           </div>
 
           <div
-            id="miniPupillageList"
-            class="profile-list"
+            id="opportunitiesLoading"
+            class="opportunities-message"
+            role="status"
+          >
+            Loading opportunities…
+          </div>
+
+          <div
+            id="opportunitiesEmpty"
+            class="opportunities-message hidden"
+          >
+            No opportunities have been added for this chambers yet.
+          </div>
+
+          <div
+            id="opportunitiesList"
+            class="opportunities-list"
+            aria-live="polite"
           ></div>
         </section>
 
@@ -479,31 +504,6 @@
 
           <div
             id="fundingList"
-            class="profile-list"
-          ></div>
-        </section>
-
-        <section
-          class="tab-panel"
-          id="tab-locations"
-        >
-          <div class="tab-heading">
-            <p class="eyebrow">
-              Chambers and circuits
-            </p>
-
-            <h2>
-              Locations
-            </h2>
-
-            <p class="tab-intro">
-              Principal chambers, regional locations, circuits and
-              accessibility information where published.
-            </p>
-          </div>
-
-          <div
-            id="locationsList"
             class="profile-list"
           ></div>
         </section>
@@ -591,7 +591,7 @@
   ></script>
 
   <script defer src="supabase.js"></script>
-  <script defer src="chamber-profile.js?v=1"></script>
+  <script defer src="chamber-profile.js?v=2"></script>
   <script defer src="theme.js?v=2"></script>
 </body>
 </html>
