@@ -26,15 +26,16 @@
 
   <meta
     name="description"
-    content="Research law firm practice areas, locations, roles, vacation schemes and training contracts on Vacatory."
+    content="Research law firm opportunities, practice areas, locations, vacation schemes and training contracts on Vacatory."
   >
 
   <link rel="stylesheet" href="styles.css?v=16">
-  <link rel="stylesheet" href="firm-profile.css?v=1">
+  <link rel="stylesheet" href="firm-profile.css?v=2">
+
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
-  
+
 <body class="firm-profile-page">
   <a class="skip-link" href="#main-content">
     Skip to content
@@ -314,17 +315,9 @@
           <button
             class="tab-btn"
             type="button"
-            data-tab="vacation-schemes"
+            data-tab="opportunities"
           >
-            Vacation schemes
-          </button>
-
-          <button
-            class="tab-btn"
-            type="button"
-            data-tab="training-contract"
-          >
-            Training contract
+            Opportunities
           </button>
 
         </div>
@@ -346,8 +339,8 @@
             </h2>
 
             <p class="tab-intro">
-              Key information to help you understand the firm before
-              beginning your application research.
+              Key information about the firm, its size, locations and
+              official careers resources.
             </p>
           </div>
 
@@ -382,7 +375,7 @@
         >
           <div class="tab-heading">
             <p class="eyebrow">
-              Work areas
+              Areas of work
             </p>
 
             <h2>
@@ -390,7 +383,7 @@
             </h2>
 
             <p class="tab-intro">
-              The legal services and practice areas listed for this firm.
+              The legal services and practice areas listed by the firm.
             </p>
           </div>
 
@@ -451,51 +444,57 @@
 
         <section
           class="tab-panel"
-          id="tab-vacation-schemes"
+          id="tab-opportunities"
         >
-          <div class="tab-heading">
-            <p class="eyebrow">
-              Applications
-            </p>
+          <div class="opportunities-heading-row">
 
-            <h2>
-              Vacation schemes
-            </h2>
+            <div class="opportunities-heading-main">
+              <p class="eyebrow">
+                Applications
+              </p>
 
-            <p class="tab-intro">
-              Scheme dates, eligibility, application deadlines and
-              official application information.
-            </p>
+              <h2>
+                Opportunities
+              </h2>
+
+              <p class="tab-intro">
+                Vacation schemes and training contracts ordered by
+                application closing date, nearest first.
+              </p>
+            </div>
+
+            <aside
+              class="opportunities-source-note"
+              aria-label="Research information"
+            >
+              <strong>Official-source research</strong>
+
+              <span>
+                Dates and details are shown only where confirmed.
+              </span>
+            </aside>
+
           </div>
 
           <div
-            id="vacationSchemesList"
-            class="profile-list"
-          ></div>
-        </section>
-
-        <section
-          class="tab-panel"
-          id="tab-training-contract"
-        >
-          <div class="tab-heading">
-            <p class="eyebrow">
-              Graduate route
-            </p>
-
-            <h2>
-              Training contract
-            </h2>
-
-            <p class="tab-intro">
-              Training contract details, locations, application dates,
-              salaries and qualification information.
-            </p>
+            id="opportunitiesLoading"
+            class="opportunities-message"
+            role="status"
+          >
+            Loading opportunities…
           </div>
 
           <div
-            id="trainingContractList"
-            class="profile-list"
+            id="opportunitiesEmpty"
+            class="opportunities-message hidden"
+          >
+            No opportunities have been added for this firm yet.
+          </div>
+
+          <div
+            id="opportunitiesList"
+            class="opportunities-list"
+            aria-live="polite"
           ></div>
         </section>
 
@@ -556,7 +555,7 @@
   ></script>
 
   <script defer src="supabase.js"></script>
-  <script defer src="firm-profile.js?v=1"></script>
+  <script defer src="firm-profile.js?v=2"></script>
   <script defer src="theme.js?v=2"></script>
 </body>
 </html>
