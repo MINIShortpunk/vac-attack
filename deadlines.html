@@ -5,124 +5,377 @@
 
   <script>
     (function () {
-      var saved = localStorage.getItem("vacatory-theme");
-      var theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      document.documentElement.dataset.theme = theme;
+      var savedTheme =
+        localStorage.getItem("vacatory-theme");
+
+      var preferredTheme =
+        window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches
+          ? "dark"
+          : "light";
+
+      document.documentElement.dataset.theme =
+        savedTheme || preferredTheme;
     })();
   </script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff">
 
   <title>Deadlines — Vacatory</title>
-  <meta name="description" content="Track vacation scheme and training contract deadlines on Vacatory.">
 
-  <link rel="stylesheet" href="styles.css?v=11">
+  <meta
+    name="description"
+    content="Track vacation scheme and training contract application deadlines on Vacatory."
+  >
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=16">
+  <link rel="stylesheet" href="deadlines.css?v=1">
+
+  <link
+    rel="icon"
+    href="favicon.svg"
+    type="image/svg+xml"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="apple-touch-icon.png"
+  >
 </head>
 
-<body>
+<body class="deadlines-page">
+  <a class="skip-link" href="#main-content">
+    Skip to content
+  </a>
 
   <header class="site-header">
     <div class="container header-inner">
 
-      <a href="index.html" class="brand" aria-label="Vacatory home">
-        <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
-          <path d="M4 4 L14 24" class="logo-stroke-left" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
-          <path d="M24 4 L14 24" class="logo-stroke-right" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Vacatory home"
+      >
+        <svg
+          class="brand-mark"
+          viewBox="0 0 28 28"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 4 L14 24"
+            class="logo-stroke-left"
+            stroke-width="3.4"
+            stroke-linecap="round"
+            fill="none"
+          ></path>
+
+          <path
+            d="M24 4 L14 24"
+            class="logo-stroke-right"
+            stroke-width="3.4"
+            stroke-linecap="round"
+            fill="none"
+          ></path>
         </svg>
+
         <span class="brand-word">acatory</span>
       </a>
 
-      <nav class="main-nav" aria-label="Main navigation">
-  <a href="index.html#firms-section">Firms</a>
-  <a href="/deadlines.html" class="active" aria-current="page">Deadlines</a>
-  <a href="commercial-awareness.html">Commercial Awareness</a>
-  <a href="/favourites.html">Favourites</a>
-</nav>
+      <nav
+        class="main-nav"
+        aria-label="Main navigation"
+      >
+        <a href="firms.html">
+          Firms
+        </a>
 
-      <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" type="button">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"></circle>
-          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
-        </svg>
+        <a href="chambers.html">
+          Chambers
+        </a>
 
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
-        </svg>
-      </button>
+        <a
+          href="deadlines.html"
+          class="active"
+          aria-current="page"
+        >
+          Deadlines
+        </a>
 
+        <a href="commercial-awareness.html">
+          Commercial Awareness
+        </a>
+      </nav>
+
+      <div class="header-actions">
+
+        <button
+          id="mobileMenuToggle"
+          class="mobile-menu-toggle"
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNavigation"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </button>
+
+        <a
+          class="header-search-link"
+          href="#deadlineSearch"
+          aria-label="Search deadlines"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M20 20l-3.5-3.5"></path>
+          </svg>
+        </a>
+
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          aria-label="Toggle dark mode"
+          type="button"
+        >
+          <svg
+            class="icon-sun"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.9 4.9l1.4 1.4"></path>
+            <path d="M17.7 17.7l1.4 1.4"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M4.9 19.1l1.4-1.4"></path>
+            <path d="M17.7 6.3l1.4-1.4"></path>
+          </svg>
+
+          <svg
+            class="icon-moon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path
+              d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"
+            ></path>
+          </svg>
+        </button>
+
+      </div>
     </div>
   </header>
 
-  <main>
+  <nav
+    id="mobileNavigation"
+    class="mobile-navigation"
+    aria-label="Mobile navigation"
+    hidden
+  >
+    <a href="firms.html">
+      Firms
+    </a>
 
-    <section class="profile-hero">
-      <div class="container profile-hero-inner">
+    <a href="chambers.html">
+      Chambers
+    </a>
 
-        <a href="index.html#firms-section" class="back-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M19 12H5M11 18l-6-6 6-6"></path>
-          </svg>
-          Back to firms
-        </a>
+    <a
+      href="deadlines.html"
+      aria-current="page"
+    >
+      Deadlines
+    </a>
 
-        <div class="profile-header-text">
-          <p class="firm-type">Application tracker</p>
-          <h1>Deadlines</h1>
-        </div>
+    <a href="commercial-awareness.html">
+      Commercial Awareness
+    </a>
+  </nav>
 
-        <p class="profile-overview">
-          Track upcoming vacation scheme and training contract dates in one place. Use this as a starting point, then check each firm profile before applying.
+  <div class="site-notice" role="status">
+    <div class="container notice-inner">
+      <span
+        class="notice-dot"
+        aria-hidden="true"
+      ></span>
+
+      <strong>Site update in progress.</strong>
+
+      <span>
+        Application information is being checked and expanded.
+      </span>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+    <section class="deadlines-hero">
+      <div class="container deadlines-hero-inner">
+
+        <p class="eyebrow">
+          Application tracker
+        </p>
+
+        <h1>
+          Deadlines
+        </h1>
+
+        <p class="deadlines-intro">
+          Browse vacation scheme and training contract
+          opportunities by closing date. Open each record for
+          eligibility, salary, application details and the official
+          source link.
         </p>
 
       </div>
     </section>
 
-    <section class="search-section" aria-label="Search deadlines">
+    <section
+      class="deadline-search-section"
+      aria-label="Search and filter deadlines"
+    >
       <div class="container">
-        <div class="search-panel">
 
-          <div class="search-control">
-            <label for="deadlineSearch" class="sr-only">Search deadlines</label>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <div class="deadline-search-panel">
+
+          <div class="deadline-search-control">
+            <label
+              for="deadlineSearch"
+              class="sr-only"
+            >
+              Search deadlines
+            </label>
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
               <circle cx="11" cy="11" r="7"></circle>
               <path d="M20 20l-3.5-3.5"></path>
             </svg>
-            <input id="deadlineSearch" type="search" placeholder="Search firms or schemes..." autocomplete="off">
+
+            <input
+              id="deadlineSearch"
+              type="search"
+              placeholder="Search firms, schemes or locations..."
+              autocomplete="off"
+            >
           </div>
 
-          <div class="filter-control">
-            <label for="deadlineType">Type</label>
+          <div class="deadline-filter-control">
+            <label for="deadlineType">
+              Type
+            </label>
+
             <select id="deadlineType">
-              <option value="">All deadlines</option>
-              <option value="Vacation scheme">Vacation schemes</option>
-              <option value="Training contract">Training contracts</option>
+              <option value="">
+                All opportunities
+              </option>
+
+              <option value="Vacation scheme">
+                Vacation schemes
+              </option>
+
+              <option value="Training contract">
+                Training contracts
+              </option>
             </select>
           </div>
 
-          <button id="deadlineReset" class="ghost-btn hidden" type="button">
+          <button
+            id="deadlineReset"
+            class="ghost-btn hidden"
+            type="button"
+          >
             Reset
           </button>
 
         </div>
+
       </div>
     </section>
 
-    <section class="firms-section">
+    <section class="deadlines-results-section">
       <div class="container">
 
-        <div class="section-heading-row">
+        <div class="deadlines-heading-row">
+
           <div>
-            <p class="eyebrow">Upcoming</p>
-            <h2>Application dates</h2>
-            <p id="deadlineCount" class="section-subtitle">Loading deadlines...</p>
+            <p class="eyebrow">
+              Upcoming
+            </p>
+
+            <h2>
+              Application opportunities
+            </h2>
+
+            <p
+              id="deadlineCount"
+              class="section-subtitle"
+            >
+              Loading deadlines…
+            </p>
           </div>
+
+          <aside
+            class="deadlines-source-note"
+            aria-label="Deadline information"
+          >
+            <strong>
+              Check before applying
+            </strong>
+
+            <span>
+              Always confirm final dates and requirements on the
+              organisation’s official page.
+            </span>
+          </aside>
+
         </div>
 
-        <div id="deadlinesList" class="profile-list" aria-live="polite"></div>
+        <div
+          id="deadlinesList"
+          class="deadlines-list"
+          aria-live="polite"
+        >
+          <p class="loading">
+            Loading deadlines…
+          </p>
+        </div>
 
       </div>
     </section>
@@ -132,15 +385,39 @@
   <footer class="site-footer">
     <div class="container footer-inner">
 
-      <a href="index.html" class="brand small" aria-label="Vacatory home">
-        <svg class="brand-mark" viewBox="0 0 28 28" aria-hidden="true">
-          <path d="M4 4 L14 24" class="logo-stroke-left" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
-          <path d="M24 4 L14 24" class="logo-stroke-right" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
+      <a
+        href="index.html"
+        class="brand small"
+        aria-label="Vacatory home"
+      >
+        <svg
+          class="brand-mark"
+          viewBox="0 0 28 28"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 4 L14 24"
+            class="logo-stroke-left"
+            stroke-width="3.4"
+            stroke-linecap="round"
+            fill="none"
+          ></path>
+
+          <path
+            d="M24 4 L14 24"
+            class="logo-stroke-right"
+            stroke-width="3.4"
+            stroke-linecap="round"
+            fill="none"
+          ></path>
         </svg>
+
         <span class="brand-word">acatory</span>
       </a>
 
-      <p class="footer-copy">© 2026 Vacatory</p>
+      <p class="footer-statement">
+        © 2026 Vacatory
+      </p>
 
       <div class="footer-links">
         <a href="#">About</a>
@@ -151,209 +428,13 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase.js"></script>
-  <script src="theme.js"></script>
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
 
-  <script>
-    let allDeadlines = [];
-
-    document.addEventListener("DOMContentLoaded", () => {
-      loadDeadlines();
-
-      document.getElementById("deadlineSearch").addEventListener("input", applyDeadlineFilters);
-      document.getElementById("deadlineType").addEventListener("change", applyDeadlineFilters);
-
-      document.getElementById("deadlineReset").addEventListener("click", () => {
-        document.getElementById("deadlineSearch").value = "";
-        document.getElementById("deadlineType").value = "";
-        applyDeadlineFilters();
-      });
-    });
-
-    async function loadDeadlines() {
-      const list = document.getElementById("deadlinesList");
-      const count = document.getElementById("deadlineCount");
-
-      list.innerHTML = "<p class='loading'>Loading deadlines...</p>";
-      count.textContent = "Loading deadlines...";
-
-      const [firmsResult, schemesResult, contractsResult] = await Promise.all([
-        client
-          .from("firms")
-          .select("id, name, active")
-          .eq("active", true),
-
-        client
-          .from("vacation_schemes")
-          .select("*"),
-
-        client
-          .from("training_contracts")
-          .select("*")
-      ]);
-
-      if (firmsResult.error || schemesResult.error || contractsResult.error) {
-        console.error(firmsResult.error || schemesResult.error || contractsResult.error);
-        list.innerHTML = "<p class='loading'>Unable to load deadlines.</p>";
-        count.textContent = "Something went wrong loading deadlines.";
-        return;
-      }
-
-      const firmNames = new Map();
-      (firmsResult.data || []).forEach(firm => {
-        firmNames.set(firm.id, firm.name);
-      });
-
-      const deadlines = [];
-
-      (schemesResult.data || []).forEach(scheme => {
-        if (!scheme.deadline) return;
-
-        deadlines.push({
-          firmId: scheme.firm_id,
-          firmName: firmNames.get(scheme.firm_id) || "Firm",
-          title: scheme.scheme_name || "Vacation scheme",
-          type: "Vacation scheme",
-          date: scheme.deadline,
-          opens: scheme.opens_on,
-          location: scheme.location,
-          status: scheme.status,
-          salary: scheme.salary,
-          eligibility: scheme.eligibility,
-          link: scheme.application_link
-        });
-      });
-
-      (contractsResult.data || []).forEach(contract => {
-        if (!contract.application_deadline) return;
-
-        deadlines.push({
-          firmId: contract.firm_id,
-          firmName: firmNames.get(contract.firm_id) || "Firm",
-          title: contract.intake_year ? `Training contract — ${contract.intake_year} intake` : "Training contract",
-          type: "Training contract",
-          date: contract.application_deadline,
-          opens: contract.application_open,
-          location: contract.location,
-          status: contract.status,
-          salary: contract.salary_first_year ? `Year 1: £${Number(contract.salary_first_year).toLocaleString("en-GB")}` : "",
-          eligibility: contract.eligibility,
-          link: contract.application_link
-        });
-      });
-
-      const seenDeadlines = new Set();
-
-allDeadlines = deadlines
-  .filter(item => firmNames.has(item.firmId))
-  .filter(item => {
-    const key = `${item.firmId}|${item.type}|${item.title}|${item.date}`;
-
-    if (seenDeadlines.has(key)) {
-      return false;
-    }
-
-    seenDeadlines.add(key);
-    return true;
-  })
-  .sort((a, b) => new Date(a.date) - new Date(b.date));
-
-      displayDeadlines(allDeadlines);
-    }
-function displayDeadlines(deadlines) {
-  const list = document.getElementById("deadlinesList");
-  const count = document.getElementById("deadlineCount");
-
-  const sortedDeadlines = [...deadlines].sort((a, b) => {
-    return new Date(a.date) - new Date(b.date);
-  });
-
-  count.textContent = sortedDeadlines.length === 1
-    ? "Showing 1 deadline"
-    : `Showing ${sortedDeadlines.length} deadlines`;
-
-  if (!sortedDeadlines.length) {
-    list.innerHTML = "<p class='loading'>No deadlines found.</p>";
-    return;
-  }
-
-  list.innerHTML = `
-    <div class="deadline-table" role="table" aria-label="Application deadlines">
-      <div class="deadline-table-head" role="row">
-        <span>Deadline</span>
-        <span>Firm</span>
-        <span>Type</span>
-        <span></span>
-      </div>
-
-      ${sortedDeadlines.map(item => `
-        <article class="deadline-table-row" role="row">
-          <span class="deadline-date">${formatDate(item.date)}</span>
-          <span class="deadline-firm">${escapeHtml(item.firmName)}</span>
-          <span>${escapeHtml(item.type)}</span>
-          <a href="firm.html?id=${encodeURIComponent(item.firmId)}" class="small-link">
-            View firm →
-          </a>
-        </article>
-      `).join("")}
-    </div>
-  `;
-}
-
-    function applyDeadlineFilters() {
-      const search = document.getElementById("deadlineSearch").value.trim().toLowerCase();
-      const type = document.getElementById("deadlineType").value;
-      const reset = document.getElementById("deadlineReset");
-
-      const filtered = allDeadlines.filter(item => {
-        const matchesSearch = !search ||
-          item.firmName.toLowerCase().includes(search) ||
-          item.title.toLowerCase().includes(search) ||
-          (item.location || "").toLowerCase().includes(search);
-
-        const matchesType = !type || item.type === type;
-
-        return matchesSearch && matchesType;
-      });
-
-      reset.classList.toggle("hidden", !(search || type));
-      displayDeadlines(filtered);
-    }
-
-    function fact(label, value) {
-      if (!value) return "";
-
-      return `
-        <div class="fact">
-          <span class="fact-label">${escapeHtml(label)}</span>
-          <span class="fact-value">${escapeHtml(value)}</span>
-        </div>
-      `;
-    }
-
-    function formatDate(value) {
-      if (!value) return "";
-
-      const date = new Date(value);
-      if (isNaN(date)) return value;
-
-      return date.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      });
-    }
-
-    function escapeHtml(value) {
-      return String(value ?? "")
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-  </script>
-
+  <script defer src="supabase.js"></script>
+  <script defer src="deadlines.js?v=1"></script>
+  <script defer src="theme.js?v=2"></script>
 </body>
 </html>
