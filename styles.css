@@ -265,6 +265,33 @@ svg {
 [data-theme="dark"] .icon-sun {
   display: none;
 }
+.mobile-navigation {
+  display: none;
+}
+
+.mobile-navigation[hidden] {
+  display: none;
+}
+
+@media (max-width: 680px) {
+  .mobile-navigation:not([hidden]) {
+    display: grid;
+    padding: 8px 14px 14px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-navigation a {
+    padding: 13px 8px;
+    color: var(--text);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-navigation a:last-child {
+    border-bottom: 0;
+  }
+}
 
 /* Update notice */
 
